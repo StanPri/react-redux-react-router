@@ -5,6 +5,10 @@ import EmployeeList from './Employee-List';
 import EmployeeDetail from './Employee-Detail';
 import EmployeeManagerDetail from './Employee-ManagerDetail';
 
+
+import {connect} from 'react-redux';
+
+
 class EmployeePage extends React.Component {
   constructor(props) {
     super(props);
@@ -142,4 +146,10 @@ function removeActive() {
 
 EmployeePage.propTypes = {};
 
-export default EmployeePage;
+function mapStateToProps(state, ownProps) {
+  return {
+    employees: state.employees
+  }
+}
+
+export default connect (mapStateToProps) (EmployeePage);
