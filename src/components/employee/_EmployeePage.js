@@ -152,4 +152,4 @@ function mapStateToProps(state, ownProps) {
   }
 }
 
-export default connect (mapStateToProps) (EmployeePage);
+export default EmployeePage;
