@@ -74,7 +74,11 @@ class EmployeePage extends React.Component {
 
   EmployeeListHandleClick(e) {
     let _employee = this.state.employees[this.state.currentPage * this.state.numPerPage + +e.target.parentNode.dataset.employee];
+
+
     this.props.dispatch(employeePageActions.createEmployee(_employee));
+
+
     let _manager = this.state.employeeData.filter((emp) => {
       return emp.fullName === _employee.manager;
     })[0];
@@ -86,13 +90,6 @@ class EmployeePage extends React.Component {
     this.setState({
       manager: _manager || {}
     });
-
-
-
-
-
-
-
   }
 
   EmployeePageNumbersHandleSelect(e) {
@@ -133,6 +130,7 @@ class EmployeePage extends React.Component {
 
 
   render() {
+    debugger;
     return (
       <Grid fluid>
         <Row>
@@ -192,6 +190,7 @@ function removeActive() {
 
 
 function mapStateToProps(state, ownProps) {
+  debugger;
   return {
     employeezzz: state.employeezzz
   };
