@@ -15,7 +15,7 @@ render(
 
 
   <Provider store={store}>
-    <Router history={browserHistory} routes={routes} />,
+    <Router history={browserHistory} routes={routes} />
   </Provider>,
 
 

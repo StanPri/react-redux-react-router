@@ -6,7 +6,16 @@ import EmployeeDetail from './Employee-Detail';
 import EmployeeManagerDetail from './Employee-ManagerDetail';
 
 
+
+
+
 import {connect} from 'react-redux';
+import * as employeePageActions from '../../actions/employeePageActions';
+
+
+
+
+
 
 
 class EmployeePage extends React.Component {
@@ -19,7 +28,8 @@ class EmployeePage extends React.Component {
       currentPage: 0,
       numPerPage: 16,
       employee: {},
-      manager: {}
+      manager: {},
+      employeezzz: {},
     };
     this.EmployeeSearchHandleChange = this.EmployeeSearchHandleChange.bind(this);
     this.EmployeeListHandleClick = this.EmployeeListHandleClick.bind(this);
@@ -64,6 +74,7 @@ class EmployeePage extends React.Component {
 
   EmployeeListHandleClick(e) {
     let _employee = this.state.employees[this.state.currentPage * this.state.numPerPage + +e.target.parentNode.dataset.employee];
+    this.props.dispatch(employeePageActions.createEmployee(_employee));
     let _manager = this.state.employeeData.filter((emp) => {
       return emp.fullName === _employee.manager;
     })[0];
@@ -75,6 +86,13 @@ class EmployeePage extends React.Component {
     this.setState({
       manager: _manager || {}
     });
+
+
+
+
+
+
+
   }
 
   EmployeePageNumbersHandleSelect(e) {
@@ -102,6 +120,18 @@ class EmployeePage extends React.Component {
     e.preventDefault();
   }
 
+
+
+
+
+  employeeRow(employee, index) {
+    return <div key={index}>{employee.fullName}</div>;
+  }
+
+
+
+
+
   render() {
     return (
       <Grid fluid>
@@ -126,7 +156,22 @@ class EmployeePage extends React.Component {
               EmployeeManagerDetailOnClick={this.EmployeeManagerDetailHandleClick}/>
           </Col>
         </Row>
+
+
+
+
+        <div>
+          <h1>Employees Selected</h1>
+            {this.props.employeezzz.map(this.employeeRow)}
+        </div>
+
+
+
+
+
       </Grid>
+
+
     );
   }
 }
@@ -144,12 +189,17 @@ function removeActive() {
       i.classList.remove('active'); }
 }
 
-EmployeePage.propTypes = {};
+
 
 function mapStateToProps(state, ownProps) {
   return {
-    employees: state.employees
-  }
+    employeezzz: state.employeezzz
+  };
 }
 
-export default EmployeePage;
+EmployeePage.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  employeezzz: PropTypes.array.isRequired
+};
+
+export default connect(mapStateToProps)(EmployeePage);
