@@ -3,7 +3,6 @@ import * as types from "../actions/actionTypes";
 export default function employeeReducer(state = [], action){
   switch (action.type) {
     case types.CREATE_EMPLOYEE:
-      debugger;
       return [...state,
         Object.assign({}, action.employeezzz)];
 

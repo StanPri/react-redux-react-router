@@ -136,7 +136,6 @@ class EmployeePage extends React.Component {
 
 
   render() {
-    debugger;
     return (
       <Grid fluid>
         <Row>
@@ -196,7 +195,6 @@ function removeActive() {
 
 
 function mapStateToProps(state, ownProps) {
-  debugger;
   return {
     employeezzz: state.employeezzz
   };
