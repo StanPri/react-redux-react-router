@@ -4,7 +4,7 @@ import EmployeeSearch from './Employee-Search';
 import EmployeeList from './Employee-List';
 import EmployeeDetail from './Employee-Detail';
 import EmployeeManagerDetail from './Employee-ManagerDetail';
-
+import {bindActionCreators} from 'redux';
 
 
 
@@ -76,7 +76,13 @@ class EmployeePage extends React.Component {
     let _employee = this.state.employees[this.state.currentPage * this.state.numPerPage + +e.target.parentNode.dataset.employee];
 
 
-    this.props.dispatch(employeePageActions.createEmployee(_employee));
+
+
+    this.props.actions.createEmployee(_employee);
+
+
+
+
 
 
     let _manager = this.state.employeeData.filter((emp) => {
@@ -196,9 +202,15 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(employeePageActions, dispatch)
+  };
+}
+
 EmployeePage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  employeezzz: PropTypes.array.isRequired
+  employeezzz: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps)(EmployeePage);
+export default connect(mapStateToProps, mapDispatchToProps)(EmployeePage);
