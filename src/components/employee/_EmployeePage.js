@@ -136,7 +136,9 @@ class EmployeePage extends React.Component {
 
 
   render() {
+    debugger;
     return (
+
       <Grid fluid>
         <Row>
           <Col xs={10} xsOffset={1} md={6} mdOffset={3} className="no-print">
@@ -201,6 +203,9 @@ function mapStateToProps(state, ownProps) {
 }
 
 function mapDispatchToProps(dispatch) {
+
+  debugger;
+
   return {
     actions: bindActionCreators(employeePageActions, dispatch)
   };
