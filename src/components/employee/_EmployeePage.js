@@ -203,9 +203,6 @@ function mapStateToProps(state, ownProps) {
 }
 
 function mapDispatchToProps(dispatch) {
-
-  debugger;
-
   return {
     actions: bindActionCreators(employeePageActions, dispatch)
   };
